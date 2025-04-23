@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 20%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 174 100% 29%;
+}
+
+.dark {
+  --background: 0 0% 10%;
+  --foreground: 0 0% 95%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 174 100% 29%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-gray-100 text-foreground font-sans;
+  }
+  h1 {
+    @apply text-3xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-medium;
+  }
+  h4 {
+    @apply text-lg font-medium;
+  }
+}
+
+@layer components {
+  .input-focus-animation::after {
+    content: "";
+    @apply absolute bottom-0 right-0 h-0.5 w-0 bg-secondary transition-all duration-300;
+  }
+
+  .input-focus-animation:focus-within::after {
+    @apply w-full;
+  }
+
+  .btn-animation {
+    @apply transition-transform duration-200 active:scale-95;
+  }
+
+  .card-animation {
+    @apply transition-shadow duration-200 hover:shadow-card-hover;
+  }
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.rtl .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.rtl .ml-1,
+.rtl .ml-2,
+.rtl .ml-3,
+.rtl .ml-4 {
+  margin-left: 0;
+}
+
+.rtl .mr-1 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+.rtl .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.rtl .mr-3 {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+.rtl .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.rtl .pl-9 {
+  padding-left: 0;
+  padding-right: 2.25rem;
+}
+
+.rtl .pr-9 {
+  padding-right: 0;
+  padding-left: 2.25rem;
+}
+
+.rtl .left-3 {
+  left: auto;
+  right: 0.75rem;
+}
+
+.rtl .right-3 {
+  right: auto;
+  left: 0.75rem;
+}
+
+.rtl .space-x-1 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-2 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-3 > :not([hidden]) ~ :not([hidden]),
+.rtl .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
