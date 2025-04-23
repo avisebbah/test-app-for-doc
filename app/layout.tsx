@@ -1,37 +1,23 @@
-import type React from "react"
-import type { Metadata } from "next"
-import "./globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { TopProgressBar } from "@/components/top-progress-bar"
+// app/layout.tsx
+import './globals.css';
+import { Inter } from 'next/font/google';
 
-// Initialize the Inter font
 const inter = Inter({
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-inter",
-})
+  subsets: ['latin'],             // או ['latin', 'latin-ext']
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
-export const metadata: Metadata = {
-  title: "אפליקציית מרשמים דיגיטלית",
-  description: "אפליקציה מודרנית למרשמים דיגיטליים עבור אנשי מקצוע בתחום הבריאות",
-    generator: 'v0.dev'
-}
+export const metadata = {
+  title: 'My V0 Project',
+  description: '...'
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="he" dir="rtl">
-      <body className={`${inter.className} rtl`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <TopProgressBar />
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
     </html>
-  )
+  );
 }
